@@ -62,6 +62,20 @@ class Direcao:
     >>> direcao.valor
     'Norte'
     """
+    girar = {
+        'direita': {
+            'Norte': 'Leste',
+            'Leste': 'Sul',
+            'Sul': 'Oeste',
+            'Oeste': 'Norte'
+        },
+        'esquerda': {
+            'Norte': 'Oeste',
+            'Oeste': 'Sul',
+            'Sul': 'Leste',
+            'Leste': 'Norte'
+        }
+    }
 
     def __init__(self):
         self.valor = 'Norte'
@@ -70,24 +84,10 @@ class Direcao:
         return self.valor
 
     def girar_a_direita(self):
-        if self.valor == 'Norte':
-            self.valor = 'Leste'
-        elif self.valor == 'Leste':
-            self.valor = 'Sul'
-        elif self.valor == 'Sul':
-            self.valor = 'Oeste'
-        else:
-            self.valor = 'Norte'
+        self.valor = self.girar['direita'][self.valor]
 
     def girar_a_esquerda(self):
-        if self.valor == 'Norte':
-            self.valor = 'Oeste'
-        elif self.valor == 'Oeste':
-            self.valor = 'Sul'
-        elif self.valor == 'Sul':
-            self.valor = 'Leste'
-        else:
-            self.valor = 'Norte'
+        self.valor = self.girar['esquerda'][self.valor]
 
 
 class Carro:
